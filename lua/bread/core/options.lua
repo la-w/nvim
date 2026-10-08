@@ -3,6 +3,9 @@
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
+-- Set to true if a Nerd Font is installed and selected in the terminal
+vim.g.have_nerd_font = true
+
 -- Set line numbers as default
 vim.opt.number = true
 
@@ -62,8 +65,14 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
--- Set the color column to 80 characters
+-- Number of spaces used for each step of (auto)indent
 vim.opt.shiftwidth = 4
+
+-- Ask to save instead of failing on :q with unsaved changes
+vim.opt.confirm = true
+
+-- Default border for floating windows (hover, signature help, diagnostics)
+vim.opt.winborder = "rounded"
 
 -- Set the tabstop to 4 characters
 vim.opt.tabstop = 4
@@ -77,4 +86,31 @@ vim.opt.expandtab = true
 -- Enable auto-indenting
 vim.opt.smartindent = true
 
--- vim: ts=2 sts=2 sw=2 et
+-- [[ Diagnostics ]]
+-- See `:help vim.diagnostic.config()`
+--
+-- Change diagnostic symbols in the sign column (gutter)
+-- if vim.g.have_nerd_font then
+--   local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
+--   local diagnostic_signs = {}
+--   for type, icon in pairs(signs) do
+--     diagnostic_signs[vim.diagnostic.severity[type]] = icon
+--   end
+--   vim.diagnostic.config { signs = { text = diagnostic_signs } }
+-- end
+
+vim.diagnostic.config({
+	virtual_text = true,
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+	severity_sort = true,
+	float = {
+		border = "rounded",
+		source = true,
+	},
+})
+
+--vim.cmd([[
+--        autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focus = false })
+--      ]])

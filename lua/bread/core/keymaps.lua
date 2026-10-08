@@ -40,7 +40,8 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Open Oil
-vim.keymap.set("n", "<leader>pv", ":Oil<CR>", { desc = "Toggle Oil file explorer" })
+vim.keymap.set("n", "<leader>pv", "<cmd>Oil<CR>", { desc = "Open Oil file explorer" })
+vim.keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Open parent directory (Oil)" })
 
 -- Maps the "J" key in visual mode to move the selected lines down by one line
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -49,6 +50,4 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Toggle undo tree
-vim.keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { desc = "Toggle undo tree" })
-
--- vim: ts=2 sts=2 sw=2 et
+vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { desc = "Toggle undo tree" })

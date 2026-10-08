@@ -34,5 +34,5 @@ require("lazy").setup({
 		{ import = "bread.plugins" },
 	},
 	-- automatically check for plugin updates
-	checker = { enabled = true },
+	checker = { enabled = true, notify = false }, -- check silently; see updates in :Lazy
 })

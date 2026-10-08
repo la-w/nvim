@@ -1,7 +1,6 @@
 return {
 	"lervag/vimtex",
 	lazy = false, -- VimTex is already lazy loaded by default
-	ft = { "tex" },
 	init = function()
 		-- Set PDF viewer options
 		vim.g.vimtex_view_method = "skim" -- for Linux use "zathura"

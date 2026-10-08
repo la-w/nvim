@@ -34,9 +34,6 @@ return {
 			--  into multiple repos for maintenance purposes.
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
-
-			-- Add Github Copilot
-			"github/copilot.vim",
 		},
 		config = function()
 			-- See `:help cmp`
@@ -118,4 +115,3 @@ return {
 		end,
 	},
 }
--- vim: ts=2 sts=2 sw=2 et

@@ -2,7 +2,6 @@
 return {
 	"rose-pine/neovim",
 	name = "rose-pine",
-	-- config = function()
-	-- vim.cmd("colorscheme rose-pine-moon")
-	-- end,
+	lazy = false,
+	priority = 1000, -- load before other plugins so their highlights build on it.
 }

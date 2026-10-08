@@ -8,7 +8,6 @@
 session.*
 
 # Plugin data (Lazy.nvim)
-lazy-lock.json
 data/lazy/
 
 # Operating system-specific files

@@ -4,10 +4,10 @@ return {
 		event = "InsertEnter",
 		version = "1.*",
 		dependencies = {
-			-- Snippet Engine & its associated nvim-cmp source
+			-- Snippet Engine
 			{
 				"L3MON4D3/LuaSnip",
-				version = "2.x",
+				version = "2.*",
 				build = (function()
 					-- Build Step is needed for regex support in snippets.
 					-- This step is not supported in many windows environments.
@@ -25,14 +25,18 @@ return {
 						"rafamadriz/friendly-snippets",
 						config = function()
 							require("luasnip.loaders.from_vscode").lazy_load()
+							-- Docstring snippets for the following filetypes
+							require("luasnip").filetype_extend("python", { "pydoc" })
+							require("luasnip").filetype_extend("rust", { "rustdoc" })
+							require("luasnip").filetype_extend("lua", { "luadoc" })
 						end,
 					},
 				},
 				opts = {},
 			},
 		},
-		-- @module 'blink.cmp'
-		-- @type blink.cmp.Config
+		--- @module 'blink.cmp'
+		--- @type blink.cmp.Config
 		opts = {
 			keymap = {
 				-- 'default' preset
@@ -57,14 +61,17 @@ return {
 			},
 
 			completion = {
-				-- (Default) Only show the documentation popup when manually triggered
 				-- Preselect the first item but don't insert it until accepted (like "noinsert")
 				list = { selection = { preselect = true, auto_insert = false } },
+				-- Automatically show documentation popup after 200 ms
 				documentation = { auto_show = true, auto_show_delay_ms = 200 },
 			},
 
 			sources = {
-				default = { "lsp", "path", "snippets", "lazydev" },
+				default = { "lsp", "path", "snippets" },
+				per_filetype = {
+					lua = { inherit_defaults = true, "lazydev" },
+				},
 				providers = {
 					lazydev = { module = "lazydev.integrations.blink", score_offset = 100 },
 				},
